@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Termogal Tech – Ugradnja i servis klima uređaja Novi Sad i Sremska Kamenica</title>
+<meta name="description" content="Prodaja, ugradnja i servis klima uređaja, grejanja i vodovoda. Izlazak na teren u Novom Sadu i Sremskoj Kamenici do 72h. Aleksandar Gvojić — Termogal Tech."/>
+<meta name="keywords" content="ugradnja klima Novi Sad, servis klima Sremska Kamenica, BTU kalkulator klima, montaža klima garancija, grejni sistemi Novi Sad, vodoinstalaterske intervencije"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sora: ['Sora','sans-serif'], manrope: ['Manrope','sans-serif'] },
+      colors: {
+        ink: '#0F172A',
+        mute: '#5B6B85',
+        icesky: '#0284C7',
+        icesky2: '#0EA5E9',
+        frost: '#F0F9FF',
+        orange: '#FF6B00',
+        orange2: '#FF8A3D',
+      },
+      boxShadow: {
+        'sky-xl': '0 20px 60px -12px rgba(2,132,199,0.18)',
+        'sky-sm': '0 8px 24px -6px rgba(2,132,199,0.12)',
+        'orange-glow': '0 8px 30px -6px rgba(255,107,0,0.45)',
+        'emerald-glow': '0 20px 60px -12px rgba(5,150,105,0.18)',
+      },
+      animation: {
+        'float': 'floatY 6s ease-in-out infinite',
+        'pulse-cta': 'pulseCta 2.2s ease-in-out infinite',
+        'spin-slow': 'spin 16s linear infinite',
+      },
+      keyframes: {
+        floatY: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+        pulseCta: {
+          '0%,100%': { boxShadow: '0 0 0 0 rgba(255,107,0,.5), 0 8px 30px -6px rgba(255,107,0,.45)' },
+          '50%': { boxShadow: '0 0 0 10px rgba(255,107,0,0), 0 8px 30px -6px rgba(255,107,0,.6)' }
+        },
+        dropNeon: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '100%': { transform: 'translateY(800px)', opacity: '0' }
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:#F8FAFC;color:#0F172A; overflow-x:hidden;}
+  h1,h2,h3,.font-display{font-family:'Sora',sans-serif}
+  .glass{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .bg-mesh{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(14,165,233,.14), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(255,107,0,.08), transparent 55%),
+      radial-gradient(ellipse 600px 400px at 50% 100%, rgba(14,165,233,.08), transparent 60%),
+      #F8FAFC;
+  }
+  .grid-dots{background-image:radial-gradient(rgba(2,132,199,.14) 1px, transparent 1px);background-size:26px 26px}
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:#F0F9FF}
+  ::-webkit-scrollbar-thumb{background:#BAE6FD;border-radius:10px}
+  .tilt{transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s}
+  
+  /* POBOLJŠAN WOOSH EFEKAT (SCROLL REVEAL) */
+  .sr{opacity:0;transform:translateY(45px) scale(0.95); filter:blur(6px); transition:all 0.85s cubic-bezier(0.16,1,0.3,1);}
+  .sr.on{opacity:1;transform:none; filter:blur(0);}
+  
+  .badge-chip{font-size:10.5px;font-weight:700;letter-spacing:.02em}
+  .kalk-btn.active{background:#0284C7;color:#fff;box-shadow:0 8px 24px -6px rgba(2,132,199,.4)}
+  .kalk-btn.active .kalk-sub{color:#E0F2FE}
+  .step-dot.active{background:#0284C7;color:#fff}
+  .step-dot.done{background:#0EA5E9;color:#fff}
+  @media(prefers-reduced-motion: reduce){*{animation:none!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ HEADER ============ -->
+<header id="hdr" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="glass border-b border-sky-100/80">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[76px] flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="leading-tight">
+          <div class="font-display font-800 text-[18px] tracking-tight text-ink">
+            TERMO<span class="text-orange">GAL</span> <span class="text-icesky font-700">TECH</span>
+          </div>
+          <div class="text-[10px] font-bold tracking-wider text-mute uppercase">Vaš izbor za svako godišnje doba</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="#klima" class="px-3.5 py-2 text-[13.5px] font-semibold text-mute hover:text-ink hover:bg-sky-50 rounded-lg transition">Klima &amp; Servis</a>
+        <a href="#grejanje" class="px-3.5 py-2 text-[13.5px] font-semibold text-mute hover:text-ink hover:bg-orange-50 rounded-lg transition">Grejanje</a>
+        <a href="#vodovod" class="px-3.5 py-2 text-[13.5px] font-semibold text-mute hover:text-ink hover:bg-sky-50 rounded-lg transition">Vodovod</a>
+        <a href="#kalkulator" class="px-3.5 py-2 text-[13.5px] font-semibold text-mute hover:text-ink hover:bg-sky-50 rounded-lg transition">Kalkulator</a>
+        <a href="#kontakt" class="px-3.5 py-2 text-[13.5px] font-semibold text-mute hover:text-ink hover:bg-sky-50 rounded-lg transition">Kontakt</a>
+      </nav>
+      <a href="tel:+381666433364" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange text-white text-[13.5px] font-bold shadow-orange-glow animate-pulse-cta hover:bg-orange2 transition">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        066 64 333 64
+      </a>
+      <button id="hmbg" class="lg:hidden flex flex-col gap-[5px] p-2" aria-label="Meni" aria-expanded="false">
+        <span class="block w-5 h-[2px] bg-ink rounded transition-all"></span>
+        <span class="block w-5 h-[2px] bg-ink rounded transition-all"></span>
+        <span class="block w-5 h-[2px] bg-ink rounded transition-all"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobMenu" class="hidden glass border-b border-sky-100/80 px-6 py-4">
+    <a href="#klima" class="mml block py-3 text-[15px] font-semibold text-ink border-b border-sky-100">Klima &amp; Servis</a>
+    <a href="#grejanje" class="mml block py-3 text-[15px] font-semibold text-ink border-b border-sky-100">Grejanje</a>
+    <a href="#vodovod" class="mml block py-3 text-[15px] font-semibold text-ink border-b border-sky-100">Vodovod</a>
+    <a href="#kalkulator" class="mml block py-3 text-[15px] font-semibold text-ink border-b border-sky-100">Kalkulator</a>
+    <a href="#kontakt" class="mml block py-3 text-[15px] font-semibold text-ink">Kontakt</a>
+  </div>
+</header>
+
+<!-- ============ MOBILE STICKY CALL/WHATSAPP BAR ============ -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-50 flex shadow-[0_-8px_30px_rgba(2,132,199,.18)]">
+  <a href="tel:+381666433364" class="flex-1 flex items-center justify-center gap-2 py-4 bg-orange text-white font-bold text-[14px]">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Pozovite odmah
+  </a>
+  <a href="https://wa.me/381666433364?text=Zdravo%20Aleksandra%2C%20zanima%20me%20usluga%20Termogal%20Tech" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 py-4 bg-[#25D366] text-white font-bold text-[14px]">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-mesh pt-32 pb-20 lg:pt-40 lg:pb-28">
+  <div class="absolute inset-0 grid-dots opacity-40 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <div class="sr inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-sky-100 shadow-sky-sm text-[12.5px] font-bold text-icesky mb-6">
+        <span class="w-2 h-2 rounded-full bg-icesky2 animate-pulse"></span>
+        Izlazak na teren u Sremskoj Kamenici i Novom Sadu do 72h
+      </div>
+      <h1 class="sr text-[34px] sm:text-[44px] lg:text-[54px] font-800 leading-[1.08] tracking-tight text-ink mb-5">
+        Klima koja stvarno hladi i greje.<br>
+        <span class="bg-gradient-to-r from-icesky to-icesky2 bg-clip-text text-transparent">Bez čekanja, prašine i komplikacija.</span>
+      </h1>
+      <p class="sr text-[16px] lg:text-[17.5px] text-mute leading-relaxed max-w-lg mb-8">
+        Prodaja, ugradnja i servis klima uređaja, grejanja i vodovoda. Aleksandar Gvojić — Termogal Tech, na terenu lično.
+      </p>
+      <div class="sr flex flex-wrap gap-3 mb-10">
+        <a href="tel:+381666433364" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-orange text-white font-bold text-[15px] shadow-orange-glow animate-pulse-cta hover:bg-orange2 hover:-translate-y-0.5 transition-all">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Pozovite odmah: 066 64 333 64
+        </a>
+        <a href="#kalkulator" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-white border border-sky-200 text-icesky font-bold text-[15px] shadow-sky-sm hover:bg-sky-50 hover:-translate-y-0.5 transition-all">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="3"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="10" y2="13"/><line x1="13" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="10" y2="17"/><line x1="13" y1="17" x2="16" y2="17"/></svg>
+          Izračunaj snagu klime (BTU)
+        </a>
+      </div>
+      <div class="sr flex items-center gap-6 flex-wrap">
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-2">
+            <div class="w-8 h-8 rounded-full bg-icesky border-2 border-white flex items-center justify-center text-white text-[11px] font-bold">A+</div>
+            <div class="w-8 h-8 rounded-full bg-orange border-2 border-white flex items-center justify-center text-white text-[11px] font-bold">500+</div>
+          </div>
+          <span class="text-[13px] font-semibold text-mute">500+ montaža sa garancijom</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+          <span class="text-[13px] font-semibold text-mute ml-1">5.0 prosečna ocena</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Showcase card -->
+    <div class="sr relative flex items-center justify-center">
+      <div class="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-br from-sky-200/50 to-transparent blur-3xl"></div>
+      <div class="absolute w-64 h-64 rounded-full border border-sky-200 animate-spin-slow"></div>
+      <div class="relative tilt glass rounded-3xl border border-sky-100 shadow-sky-xl p-6 w-full max-w-sm animate-float">
+        <div class="flex items-center justify-between mb-4">
+          <span class="badge-chip inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-orange/10 text-orange border border-orange/20">
+            🏆 NAJPRODAVANIJI 2026
+          </span>
+          <span class="badge-chip px-2.5 py-1.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">A+++</span>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-b from-sky-50 to-white mb-4 h-52">
+          <img src="klima 1.jpg" alt="Inverter klima uređaj na zidu" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="font-display font-700 text-[17px] text-ink">Inverter Split 12k BTU</h3>
+          <div class="flex items-center gap-1 text-orange text-[13px] font-bold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF6B00"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+            5.0
+          </div>
+        </div>
+        <p class="text-[13px] text-mute mb-4">Tih rad, Wi-Fi upravljanje, grejanje do -15°C</p>
+        <div class="flex flex-wrap gap-1.5 mb-5">
+          <span class="badge-chip px-2.5 py-1 rounded-full bg-sky-50 text-icesky border border-sky-100">Wi-Fi Ready</span>
+          <span class="badge-chip px-2.5 py-1 rounded-full bg-sky-50 text-icesky border border-sky-100">R32 Eko Gas</span>
+          <span class="badge-chip px-2.5 py-1 rounded-full bg-sky-50 text-icesky border border-sky-100">5 god garancije</span>
+        </div>
+        <a href="tel:+381666433364" class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-icesky text-white font-bold text-[14px] hover:bg-icesky2 transition shadow-sky-sm">
+          Pitaj za cenu sa ugradnjom
+        </a>
+      </div>
+      <!-- floating mini badge -->
+      <div class="absolute -left-6 bottom-8 glass rounded-2xl border border-sky-100 shadow-sky-sm px-4 py-3 flex items-center gap-2.5 animate-float" style="animation-delay:1.5s">
+        <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="text-[12px] font-bold text-ink leading-tight">Garancija na rad</div>
+          <div class="text-[10.5px] text-mute">Pismena · 5 godina</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<div class="border-y border-sky-100 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-3 divide-x divide-sky-100">
+    <div class="sr py-8 text-center">
+      <div class="font-display text-[30px] sm:text-[40px] font-800 text-icesky"><span class="stat-num" data-target="500">0</span>+</div>
+      <div class="text-[12.5px] sm:text-[13px] font-semibold text-mute mt-1">Uspešnih montaža i servisa</div>
+    </div>
+    <div class="sr py-8 text-center">
+      <div class="font-display text-[30px] sm:text-[40px] font-800 text-orange">&lt; <span class="stat-num" data-target="72">0</span>h</div>
+      <div class="text-[12.5px] sm:text-[13px] font-semibold text-mute mt-1">Prosečno vreme izlaska na teren</div>
+    </div>
+    <div class="sr py-8 text-center">
+      <div class="font-display text-[30px] sm:text-[40px] font-800 text-ink"><span class="stat-num" data-target="100">0</span>%</div>
+      <div class="text-[12.5px] sm:text-[13px] font-semibold text-mute mt-1">Garancija na izvedene radove</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BLOK 1: KLIMATIZACIJA I SERVIS ============ -->
+<section id="klima" class="py-24 lg:py-32 bg-gradient-to-b from-white to-sky-50 relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-icesky/5 blur-3xl"></div>
+  
+  <!-- WOW NEON EFEKAT -->
+  <div class="absolute top-0 left-[15%] w-[1.5px] h-32 bg-cyan-400 shadow-[0_0_15px_#22d3ee] animate-[dropNeon_3s_ease-in-out_infinite]"></div>
+  <div class="absolute top-0 left-[45%] w-[2.5px] h-48 bg-icesky shadow-[0_0_20px_#0284c7] animate-[dropNeon_4.5s_ease-in-out_infinite_1s]"></div>
+  <div class="absolute top-0 right-[25%] w-[1.5px] h-24 bg-icesky shadow-[0_0_15px_#0284c7] animate-[dropNeon_2.5s_ease-in-out_infinite_0.5s]"></div>
+  <div class="absolute top-0 right-[8%] w-[2px] h-40 bg-cyan-300 shadow-[0_0_18px_#67e8f9] animate-[dropNeon_5s_ease-in-out_infinite_2s]"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="sr text-center mb-16">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">❄️ Klimatizacija</span>
+      <h2 class="font-display text-[28px] sm:text-[40px] font-800 tracking-tight text-icesky mb-3">Klima uređaji — prodaja, ugradnja i servis</h2>
+      <p class="text-[15.5px] text-mute max-w-xl mx-auto">Ledeno svež pristup svakom poslu: od prve ugradnje do redovnog godišnjeg servisiranja koje produžava vek uređaja.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center mb-16">
+      <div class="sr tilt order-2 lg:order-1 rounded-3xl overflow-hidden border border-sky-100 shadow-sky-xl h-80">
+        <img src="servis.jpg" alt="Servis i dubinsko pranje klime" class="w-full h-full object-cover">
+      </div>
+      <div class="order-1 lg:order-2">
+        <span class="sr badge-chip inline-block px-3 py-1.5 rounded-full bg-icesky text-white mb-5">Zašto je servis ključan</span>
+        <h3 class="sr font-display text-[24px] font-800 text-ink mb-4">Servis klime nije opcija — to je nužnost</h3>
+        <p class="sr text-[14.5px] text-mute leading-relaxed mb-6">Zapuštena klima širi prašinu, gljivice i alergene, a troši i do 40% više struje. Naš servis vraća uređaj na fabrički učinak.</p>
+        <div class="sr grid sm:grid-cols-2 gap-3">
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-sky-100">
+            <div class="w-9 h-9 rounded-lg bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="text-[13.5px] font-bold text-ink">Dubinsko pranje</div><div class="text-[12px] text-mute">Unutrašnja i spoljašnja jedinica</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-sky-100">
+            <div class="w-9 h-9 rounded-lg bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="text-[13.5px] font-bold text-ink">Dezinfekcija</div><div class="text-[12px] text-mute">Uklanjanje bakterija i gljivica</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-sky-100">
+            <div class="w-9 h-9 rounded-lg bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+            <div><div class="text-[13.5px] font-bold text-ink">Dopuna freon gasa</div><div class="text-[12px] text-mute">Vraćamo punu snagu hlađenja</div></div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-white border border-sky-100">
+            <div class="w-9 h-9 rounded-lg bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><div class="text-[13.5px] font-bold text-ink">Ovlašćeni servis</div><div class="text-[12px] text-mute">Sve poznate marke uređaja</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sr grid sm:grid-cols-3 gap-5">
+      <div class="tilt p-6 rounded-2xl bg-white border border-sky-100 shadow-sky-sm text-center">
+        <div class="text-[26px] mb-2">🛒</div>
+        <h4 class="font-display text-[15px] font-700 text-ink mb-1">Prodaja</h4>
+        <p class="text-[12.5px] text-mute">Savetujemo pravi model za vaš prostor</p>
+      </div>
+      <div class="tilt p-6 rounded-2xl bg-icesky text-white shadow-sky-xl text-center">
+        <div class="text-[26px] mb-2">🔧</div>
+        <h4 class="font-display text-[15px] font-700 mb-1">Ugradnja</h4>
+        <p class="text-[12.5px] text-sky-100">Stručna montaža bez prašine i nereda</p>
+      </div>
+      <div class="tilt p-6 rounded-2xl bg-white border border-sky-100 shadow-sky-sm text-center">
+        <div class="text-[26px] mb-2">🧊</div>
+        <h4 class="font-display text-[15px] font-700 text-ink mb-1">Servis</h4>
+        <p class="text-[12.5px] text-mute">Redovno održavanje uz garanciju</p>
+      </div>
+    </div>
+    <div class="sr text-center mt-10">
+      <a href="tel:+381666433364" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-icesky text-white font-bold text-[15px] shadow-sky-xl hover:bg-icesky2 hover:-translate-y-0.5 transition-all">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Zakažite servis klime
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOK 2: GREJNI SISTEMI (EKSTREMNI PRELAZ) ============ -->
+<!-- ============ BLOK 2: GREJNI SISTEMI (PREMIUM KONTRAST) ============ -->
+<section id="grejanje" class="py-24 lg:py-32 bg-gradient-to-br from-[#E65100] via-[#F57C00] to-[#DD2C00] relative overflow-hidden">
+  
+  <!-- Zanimljivi pozadinski efekti (Tačkasti pattern + Glow) -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xNSkiLz48L3N2Zz4=')] opacity-40"></div>
+  <div class="absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full bg-white/10 blur-3xl"></div>
+  <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-yellow-400/30 blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="sr text-center mb-16">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-white/20 text-white border border-white/30 mb-4 shadow-xl backdrop-blur-md">🔥 Grejanje</span>
+      <h2 class="font-display text-[28px] sm:text-[40px] font-800 tracking-tight text-white mb-3">Grejni sistemi — toplina u koju možete da se pouzdate</h2>
+      <p class="text-[15.5px] text-orange-50 max-w-xl mx-auto drop-shadow-md">Montaža, održavanje i optimizacija sistema za grejanje — od radijatora do podnog grejanja.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center mb-16">
+      <div>
+        
+        <!-- KARTICE SA VISOKIM KONTRASTOM (Belo staklo) -->
+        <div class="sr grid sm:grid-cols-2 gap-4 mb-8">
+          <div class="tilt p-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-white shadow-2xl">
+            <div class="w-11 h-11 rounded-xl bg-orange/15 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M12 2a7 7 0 017 7c0 4-3 6-4 8H9c-1-2-4-4-4-8a7 7 0 017-7z"/></svg></div>
+            <h4 class="font-display text-[15px] font-700 text-ink mb-1">Montaža sistema</h4>
+            <p class="text-[12.5px] text-mute">Radijatori, podno grejanje, kotlovi</p>
+          </div>
+          
+          <div class="tilt p-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-white shadow-2xl">
+            <div class="w-11 h-11 rounded-xl bg-orange/15 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h4 class="font-display text-[15px] font-700 text-ink mb-1">Priprema za sezonu</h4>
+            <p class="text-[12.5px] text-mute">Ispiranje, oduvarivanje, provera</p>
+          </div>
+          
+          <div class="tilt p-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-white shadow-2xl">
+            <div class="w-11 h-11 rounded-xl bg-orange/15 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h4 class="font-display text-[15px] font-700 text-ink mb-1">Optimizacija</h4>
+            <p class="text-[12.5px] text-mute">Manja potrošnja energije</p>
+          </div>
+          
+          <div class="tilt p-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-white shadow-2xl">
+            <div class="w-11 h-11 rounded-xl bg-orange/15 flex items-center justify-center mb-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/></svg></div>
+            <h4 class="font-display text-[15px] font-700 text-ink mb-1">Kotlovi</h4>
+            <p class="text-[12.5px] text-mute">Nabavka i servis kotlova</p>
+          </div>
+        </div>
+        
+        <!-- POPRAVLJENO DUGME (Dark Ink za brutalan kontrast i čitljivost) -->
+        <a href="tel:+381666433364" class="sr inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-ink text-white font-bold text-[15px] shadow-[0_10px_30px_rgba(15,23,42,0.4)] hover:bg-slate-800 hover:-translate-y-0.5 transition-all">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Pozovite za procenu grejanja
+        </a>
+      </div>
+      
+      <div class="sr tilt rounded-3xl overflow-hidden border-4 border-white/20 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] h-80 relative group">
+        <img src="radijator.jpg" alt="Montaža grejnog sistema" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<!-- ============ BLOK 3: VODOVODNE INSTALACIJE ============ -->
+<section id="vodovod" class="py-24 lg:py-32 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 relative overflow-hidden text-white">
+  <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-cyan-400/10 blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-cyan-400/5 blur-3xl"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="sr text-center mb-16">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-cyan-400/15 text-cyan-300 border border-cyan-400/25 mb-4">💧 Vodovod</span>
+      <h2 class="font-display text-[28px] sm:text-[40px] font-800 tracking-tight text-white mb-3">Vodovodne instalacije — brzo, pouzdano, bez odlaganja</h2>
+      <p class="text-[15.5px] text-blue-100 max-w-xl mx-auto">Hitne intervencije, zamena cevovoda i montaža sanitarne opreme sa transparentnom cenom rada.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center mb-16">
+      <div class="sr tilt order-2 lg:order-1 rounded-3xl overflow-hidden border border-cyan-400/20 shadow-2xl h-80">
+        <img src="vodovod.jpg" alt="Vodoinstalaterski radovi" class="w-full h-full object-cover">
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="sr space-y-4 mb-8">
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <div class="w-11 h-11 rounded-xl bg-cyan-400/20 flex items-center justify-center flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div><div class="text-[14.5px] font-bold text-white mb-0.5">Hitne intervencije</div><div class="text-[12.5px] text-blue-100">Puknuće cevi, curenje, začepljenje — reagujemo odmah</div></div>
+          </div>
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <div class="w-11 h-11 rounded-xl bg-cyan-400/20 flex items-center justify-center flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 007-7c0-4.67-7-14-7-14S5 10.33 5 15a7 7 0 007 7z"/></svg></div>
+            <div><div class="text-[14.5px] font-bold text-white mb-0.5">Zamena cevovoda</div><div class="text-[12.5px] text-blue-100">PPR, bakar i višeslojne cevi, uredno i bez oštećenja</div></div>
+          </div>
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <div class="w-11 h-11 rounded-xl bg-cyan-400/20 flex items-center justify-center flex-shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H3l9-9 9 9h-2"/><path d="M3 21h18"/><path d="M9 21V9m6 12V9"/></svg></div>
+            <div><div class="text-[14.5px] font-bold text-white mb-0.5">Sanitarna oprema</div><div class="text-[12.5px] text-blue-100">Umivaonici, WC šolje, tuš kabine, bojleri</div></div>
+          </div>
+        </div>
+        <a href="tel:+381666433364" class="sr inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-cyan-400 text-blue-900 font-bold text-[15px] shadow-2xl hover:bg-cyan-300 hover:-translate-y-0.5 transition-all">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Hitna intervencija — pozovite odmah
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZAŠTO MI ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="sr text-center mb-14">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">Zašto Termogal Tech</span>
+      <h2 class="font-display text-[28px] sm:text-[38px] font-800 tracking-tight text-ink">Prednost je u detaljima koji se pamte</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="sr tilt group p-8 rounded-3xl bg-frost border border-sky-100 hover:-translate-y-2 hover:bg-sky-50 hover:shadow-sky-xl transition-all duration-300">
+        <div class="w-12 h-12 rounded-2xl bg-icesky/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-[17px] text-ink mb-2">Princip "Ključ u ruke"</h3>
+        <p class="text-[13.5px] text-mute leading-relaxed">Sav posao oko nabavke, transporta i ugradnje preuzimamo mi — od izbora opreme do probnog rada.</p>
+      </div>
+      <div class="sr tilt group p-8 rounded-3xl bg-frost border border-sky-100 hover:-translate-y-2 hover:bg-orange-50 hover:border-orange/20 hover:shadow-orange-glow transition-all duration-300">
+        <div class="w-12 h-12 rounded-2xl bg-orange/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-[17px] text-ink mb-2">Čisto i uredno</h3>
+        <p class="text-[13.5px] text-mute leading-relaxed">Posle završenog posla vaš prostor ostaje besprekorno čist — zaštićujemo podove i nameštaj.</p>
+      </div>
+      <div class="sr tilt group p-8 rounded-3xl bg-frost border border-sky-100 hover:-translate-y-2 hover:bg-emerald-50 hover:border-emerald-200 hover:shadow-emerald-glow transition-all duration-300">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-[17px] text-ink mb-2">Garancija i prvi servis</h3>
+        <p class="text-[13.5px] text-mute leading-relaxed">Ne nestajemo posle ugradnje — pismena garancija i podrška za redovno održavanje.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BTU KALKULATOR ============ -->
+<section id="kalkulator" class="py-24 lg:py-32 bg-frost relative overflow-hidden">
+  <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-icesky/5 blur-3xl"></div>
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 relative">
+    <div class="sr text-center mb-14">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">BTU Kalkulator</span>
+      <h2 class="font-display text-[28px] sm:text-[38px] font-800 tracking-tight text-ink mb-3">Koja snaga klime vam treba?</h2>
+      <p class="text-[15.5px] text-mute max-w-lg mx-auto">Tri brza klika i dobijate preporuku uz mogućnost da odmah pošaljete upit Aleksandru.</p>
+    </div>
+
+    <div class="sr bg-white rounded-3xl border border-sky-100 shadow-sky-xl p-6 sm:p-10">
+      <!-- step indicator -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <div class="flex items-center gap-2">
+          <div id="dot1" class="step-dot active w-8 h-8 rounded-full bg-sky-100 text-icesky flex items-center justify-center text-[13px] font-bold transition">1</div>
+          <span class="hidden sm:block text-[12.5px] font-semibold text-mute">Kvadratura</span>
+        </div>
+        <div class="w-8 sm:w-14 h-[2px] bg-sky-100"></div>
+        <div class="flex items-center gap-2">
+          <div id="dot2" class="step-dot w-8 h-8 rounded-full bg-sky-100 text-mute flex items-center justify-center text-[13px] font-bold transition">2</div>
+          <span class="hidden sm:block text-[12.5px] font-semibold text-mute">Izolacija</span>
+        </div>
+        <div class="w-8 sm:w-14 h-[2px] bg-sky-100"></div>
+        <div class="flex items-center gap-2">
+          <div id="dot3" class="step-dot w-8 h-8 rounded-full bg-sky-100 text-mute flex items-center justify-center text-[13px] font-bold transition">3</div>
+          <span class="hidden sm:block text-[12.5px] font-semibold text-mute">Namena</span>
+        </div>
+      </div>
+
+      <!-- Step 1: kvadratura -->
+      <div id="kstep1" class="kstep">
+        <label class="block text-[12px] font-bold tracking-widest uppercase text-mute mb-4 text-center">Korak 1 — Izaberite kvadraturu prostora</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-center" data-m2="28" onclick="pickM2(this,28)">
+            <div class="font-display text-[20px] font-800 text-ink">20–35</div>
+            <div class="kalk-sub text-[11.5px] font-semibold text-mute">m²</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-center" data-m2="45" onclick="pickM2(this,45)">
+            <div class="font-display text-[20px] font-800 text-ink">35–55</div>
+            <div class="kalk-sub text-[11.5px] font-semibold text-mute">m²</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-center" data-m2="65" onclick="pickM2(this,65)">
+            <div class="font-display text-[20px] font-800 text-ink">55–80</div>
+            <div class="kalk-sub text-[11.5px] font-semibold text-mute">m²</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-center" data-m2="90" onclick="pickM2(this,90)">
+            <div class="font-display text-[20px] font-800 text-ink">80+</div>
+            <div class="kalk-sub text-[11.5px] font-semibold text-mute">m²</div>
+          </button>
+        </div>
+        <div class="flex justify-end">
+          <button onclick="goStep(2)" id="next1" disabled class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-200 text-white font-bold text-[14px] cursor-not-allowed transition">
+            Dalje <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: izolacija -->
+      <div id="kstep2" class="kstep hidden">
+        <label class="block text-[12px] font-bold tracking-widest uppercase text-mute mb-4 text-center">Korak 2 — Pozicija stana i izolacija</label>
+        <div class="grid sm:grid-cols-3 gap-3 mb-8">
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-f="0.9" onclick="pickIzo(this,0.9)">
+            <div class="text-[22px] mb-2">🧊</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Odlična izolacija</div>
+            <div class="kalk-sub text-[12px] text-mute">Nova stolarija, termo fasada</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-f="1" onclick="pickIzo(this,1)">
+            <div class="text-[22px] mb-2">🏠</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Prosečna</div>
+            <div class="kalk-sub text-[12px] text-mute">Standardan stan ili kuća</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-f="1.25" onclick="pickIzo(this,1.25)">
+            <div class="text-[22px] mb-2">☀️</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Potkrovlje, puno sunca</div>
+            <div class="kalk-sub text-[12px] text-mute">Slaba izolacija, jako zagrevanje</div>
+          </button>
+        </div>
+        <div class="flex justify-between">
+          <button onclick="goStep(1)" class="px-6 py-3 rounded-xl border border-sky-200 text-mute font-bold text-[14px] hover:bg-sky-50 transition">Nazad</button>
+          <button onclick="goStep(3)" id="next2" disabled class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-200 text-white font-bold text-[14px] cursor-not-allowed transition">
+            Dalje <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: namena -->
+      <div id="kstep3" class="kstep hidden">
+        <label class="block text-[12px] font-bold tracking-widest uppercase text-mute mb-4 text-center">Korak 3 — Glavna namena uređaja</label>
+        <div class="grid sm:grid-cols-3 gap-3 mb-8">
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-n="1" onclick="pickNam(this,1,'Samo letnje hlađenje')">
+            <div class="text-[22px] mb-2">❄️</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Samo hlađenje</div>
+            <div class="kalk-sub text-[12px] text-mute">Isključivo leti</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-n="1.1" onclick="pickNam(this,1.1,'Dogrevanje u prelaznom periodu')">
+            <div class="text-[22px] mb-2">🌤️</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Dogrevanje</div>
+            <div class="kalk-sub text-[12px] text-mute">Prelazni period, jesen/proleće</div>
+          </button>
+          <button class="kalk-btn tilt p-5 rounded-2xl border-2 border-sky-100 bg-sky-50/50 hover:border-icesky/40 transition text-left" data-n="1.25" onclick="pickNam(this,1.25,'Primarno grejanje zimi')">
+            <div class="text-[22px] mb-2">🔥</div>
+            <div class="font-display text-[14.5px] font-700 text-ink mb-1">Primarno grejanje</div>
+            <div class="kalk-sub text-[12px] text-mute">Glavni izvor toplote zimi</div>
+          </button>
+        </div>
+        <div class="flex justify-between">
+          <button onclick="goStep(2)" class="px-6 py-3 rounded-xl border border-sky-200 text-mute font-bold text-[14px] hover:bg-sky-50 transition">Nazad</button>
+          <button onclick="showKalkResult()" id="next3" disabled class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-200 text-white font-bold text-[14px] cursor-not-allowed transition">
+            Prikaži rezultat <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="kresult" class="hidden sr text-center">
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 text-[12px] font-bold mb-4">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Preporuka spremna
+          </div>
+          <div class="font-display text-[15px] font-600 text-mute mb-1">Za vaš prostor idealna je</div>
+          <div class="font-display text-[38px] sm:text-[46px] font-800 bg-gradient-to-r from-icesky to-icesky2 bg-clip-text text-transparent leading-none mb-2" id="kBTU">12.000 BTU / 3.5 kW</div>
+          <div class="text-[14px] text-mute" id="kDetail">Inverter klima — preporučeno za 35–55m² sa prosečnom izolacijom</div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-3 mb-8">
+          <div class="p-4 rounded-2xl bg-sky-50 border border-sky-100 text-center">
+            <div class="text-[11px] font-bold text-mute uppercase tracking-wide mb-1">Kvadratura</div>
+            <div class="font-display font-700 text-ink" id="rM2">—</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-sky-50 border border-sky-100 text-center">
+            <div class="text-[11px] font-bold text-mute uppercase tracking-wide mb-1">Izolacija</div>
+            <div class="font-display font-700 text-ink" id="rIzo">—</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-sky-50 border border-sky-100 text-center">
+            <div class="text-[11px] font-bold text-mute uppercase tracking-wide mb-1">Namena</div>
+            <div class="font-display font-700 text-ink" id="rNam">—</div>
+          </div>
+        </div>
+
+        <!-- Preporučeni model -->
+        <div class="rounded-2xl border-2 border-orange/30 bg-orange-50/40 p-5 mb-8 flex flex-col sm:flex-row items-center gap-5">
+          <div id="kModelImg" class="w-full sm:w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden bg-white flex items-center justify-center p-2 shadow-sky-sm">
+            <!-- Dinamički se ubacuje slika modela -->
+          </div>
+          <div class="flex-1 text-center sm:text-left">
+            <span class="badge-chip inline-block px-3 py-1 rounded-full bg-orange text-white mb-2 shadow-orange-glow">Preporučeni model</span>
+            <div class="font-display text-[19px] font-800 text-ink" id="kModelName">—</div>
+            <div class="text-[13px] text-mute" id="kModelDesc">—</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a id="kWaBtn" href="#" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-[#25D366] text-white font-bold text-[14.5px] hover:bg-[#1fbd59] transition shadow-sky-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pošalji upit Aleksandru na WhatsApp
+          </a>
+          <a href="tel:+381666433364" class="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl bg-orange text-white font-bold text-[14.5px] hover:bg-orange2 transition animate-pulse-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Pozovite za potvrdu
+          </a>
+        </div>
+        <button onclick="resetKalk()" class="w-full text-center text-[12.5px] font-semibold text-mute hover:text-icesky mt-4 transition">← Izračunaj ponovo</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODEL COMPARISON ============ -->
+<section id="modeli" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="sr text-center mb-14">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">Uporedite modele</span>
+      <h2 class="font-display text-[28px] sm:text-[38px] font-800 tracking-tight text-ink mb-3">U čemu je razlika i zašto je skuplja?</h2>
+      <p class="text-[15.5px] text-mute max-w-xl mx-auto">Tri nivoa opreme za tri različite potrebe — od osnovnog hlađenja do celogodišnjeg grejanja bez gubitka snage.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      <!-- Model 1: 9k BTU – Mali prostor -->
+      <div class="sr tilt bg-white rounded-3xl border border-slate-200 shadow-sky-sm p-8 flex flex-col hover:shadow-sky-xl hover:-translate-y-1 transition-all">
+        <span class="badge-chip inline-block w-fit px-3 py-1.5 rounded-full bg-slate-100 text-mute mb-5">Mali prostor</span>
+        <div class="h-36 rounded-2xl overflow-hidden mb-5 bg-slate-50 flex items-center justify-center p-2">
+          <img src="model1.png" alt="Inverter 9k BTU" class="max-w-full max-h-full object-contain mix-blend-multiply">
+        </div>
+        <h3 class="font-display text-[20px] font-800 text-ink mb-2">Inverter 9.000 BTU</h3>
+        <p class="text-[13.5px] text-mute mb-6 leading-relaxed">Za manje sobe do 25m². Idealna prva klima za spavaću sobu ili kancelariju.</p>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>A++ energetska klasa</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Osnovni filteri vazduha</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>3 godine garancije</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Grejanje do -10°C</li>
+        </ul>
+        <a href="tel:+381666433364" class="flex items-center justify-center gap-2 py-3.5 rounded-xl border-2 border-slate-200 text-ink font-bold text-[13.5px] hover:bg-slate-50 transition">Zatraži cenu sa montažom</a>
+      </div>
+
+      <!-- Model 2: 12k BTU – Best Buy -->
+      <div class="sr tilt relative bg-white rounded-3xl border-2 border-orange shadow-orange-glow p-8 flex flex-col lg:-mt-4 lg:mb-4 hover:-translate-y-1 transition-all">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span class="badge-chip inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-orange text-white shadow-orange-glow">🏆 NAJPRODAVANIJI</span>
+        </div>
+        <span class="badge-chip inline-block w-fit px-3 py-1.5 rounded-full bg-orange/10 text-orange mb-5 mt-3">Best Buy</span>
+        <div class="h-36 rounded-2xl overflow-hidden mb-5 bg-slate-50 flex items-center justify-center p-2">
+          <img src="model2.png" alt="Inverter 12k BTU" class="max-w-full max-h-full object-contain mix-blend-multiply">
+        </div>
+        <h3 class="font-display text-[20px] font-800 text-ink mb-2">Inverter 12.000 BTU</h3>
+        <p class="text-[13.5px] text-mute mb-6 leading-relaxed">Savršen balans grejanja i hlađenja za srednje prostorije do 40m². Tih rad, Wi-Fi aplikacija.</p>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink font-semibold"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>A+++/A++ energetska klasa</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink font-semibold"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Greje pouzdano do -15°C</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink font-semibold"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Jonizator vazduha</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink font-semibold"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wi-Fi upravljanje aplikacijom</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-ink font-semibold"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>5 godina garancije</li>
+        </ul>
+        <a href="tel:+381666433364" class="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-orange text-white font-bold text-[13.5px] shadow-orange-glow animate-pulse-cta hover:bg-orange2 transition">Najtraženiji model — Pozovi</a>
+      </div>
+
+      <!-- Model 3: 18k BTU – Premium -->
+      <div class="sr tilt bg-gradient-to-b from-ink to-slate-800 rounded-3xl border border-slate-700 shadow-sky-xl p-8 flex flex-col text-white hover:-translate-y-1 transition-all">
+        <span class="badge-chip inline-block w-fit px-3 py-1.5 rounded-full bg-icesky2/20 text-icesky2 mb-5">Premium / Veliki prostor</span>
+        <div class="h-36 rounded-2xl overflow-hidden mb-5 bg-slate-700/50 flex items-center justify-center p-2">
+          <img src="model3.png" alt="Inverter 18k BTU" class="max-w-full max-h-full object-contain">
+        </div>
+        <h3 class="font-display text-[20px] font-800 mb-2">Inverter 18.000 BTU</h3>
+        <p class="text-[13.5px] text-slate-300 mb-6 leading-relaxed">Za velike kvadrature preko 55m² i jako grejanje zimi bez gubitka snage do -25°C.</p>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 text-[13.5px] text-slate-100"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Radi do -25°C bez gubitka snage</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-slate-100"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Maksimalna ušteda struje</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-slate-100"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UV sterilizacija vazduha</li>
+          <li class="flex items-start gap-2.5 text-[13.5px] text-slate-100"><svg class="mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Grejači tacne i kompresora</li>
+        </ul>
+        <a href="tel:+381666433364" class="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white text-ink font-bold text-[13.5px] hover:bg-slate-100 transition">Zatraži ponudu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-24 lg:py-32 bg-frost">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="sr text-center mb-12">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">Česta pitanja</span>
+      <h2 class="font-display text-[26px] sm:text-[32px] font-800 tracking-tight text-ink">Ono što nas najčešće pitaju</h2>
+    </div>
+    <div class="space-y-3">
+      <div class="fq sr bg-white rounded-2xl border border-sky-100 overflow-hidden">
+        <button class="fqq w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="fqToggle(this)" aria-expanded="false">
+          <span class="text-[15px] font-bold text-ink">Koliko traje ugradnja klima uređaja?</span>
+          <div class="fqi w-7 h-7 rounded-full bg-sky-50 flex items-center justify-center flex-shrink-0 transition-transform"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="fqa max-h-0 overflow-hidden transition-all duration-300"><p class="px-6 pb-5 text-[14px] text-mute leading-relaxed">Standardna ugradnja jednog split sistema traje 2–3 sata, zavisno od trase. Na kraju vam pokazujemo upotrebu i predajemo dokumentaciju.</p></div>
+      </div>
+      <div class="fq sr bg-white rounded-2xl border border-sky-100 overflow-hidden">
+        <button class="fqq w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="fqToggle(this)" aria-expanded="false">
+          <span class="text-[15px] font-bold text-ink">Koliko često treba raditi servis klime?</span>
+          <div class="fqi w-7 h-7 rounded-full bg-sky-50 flex items-center justify-center flex-shrink-0 transition-transform"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="fqa max-h-0 overflow-hidden transition-all duration-300"><p class="px-6 pb-5 text-[14px] text-mute leading-relaxed">Preporučujemo jednom godišnje, pred sezonu. Redovan servis znači nižu potrošnju struje i duži vek uređaja.</p></div>
+      </div>
+      <div class="fq sr bg-white rounded-2xl border border-sky-100 overflow-hidden">
+        <button class="fqq w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="fqToggle(this)" aria-expanded="false">
+          <span class="text-[15px] font-bold text-ink">Da li dajete garanciju na ugradnju?</span>
+          <div class="fqi w-7 h-7 rounded-full bg-sky-50 flex items-center justify-center flex-shrink-0 transition-transform"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="fqa max-h-0 overflow-hidden transition-all duration-300"><p class="px-6 pb-5 text-[14px] text-mute leading-relaxed">Da — pismena garancija na sve izvedene radove. Ako se problem javi zbog ugradnje, rešavamo o svom trošku.</p></div>
+      </div>
+      <div class="fq sr bg-white rounded-2xl border border-sky-100 overflow-hidden">
+        <button class="fqq w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="fqToggle(this)" aria-expanded="false">
+          <span class="text-[15px] font-bold text-ink">Koliko košta izlazak majstora?</span>
+          <div class="fqi w-7 h-7 rounded-full bg-sky-50 flex items-center justify-center flex-shrink-0 transition-transform"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="fqa max-h-0 overflow-hidden transition-all duration-300"><p class="px-6 pb-5 text-[14px] text-mute leading-relaxed">Cena zavisi od vrste posla i lokacije — sve kažemo unapred, bez skrivenih troškova. Iskoristite BTU kalkulator ili nas pozovite direktno.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section id="kontakt" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="sr text-center mb-14">
+      <span class="badge-chip inline-block px-3.5 py-1.5 rounded-full bg-icesky/10 text-icesky border border-icesky/20 mb-4">Kontakt i lokacija</span>
+      <h2 class="font-display text-[28px] sm:text-[38px] font-800 tracking-tight text-ink mb-3">Zakažite termin ili postavite pitanje</h2>
+      <p class="text-[15.5px] text-mute">Trg kralja Petra I 4, Sremska Kamenica</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 mb-10">
+      <div class="grid sm:grid-cols-2 gap-4 content-start">
+        <div class="sr flex items-center gap-4 p-5 rounded-2xl bg-frost border border-sky-100">
+          <div class="w-11 h-11 rounded-xl bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="text-[10.5px] font-bold text-mute uppercase tracking-wide mb-0.5">Telefon</div><div class="text-[14.5px] font-bold text-ink"><a href="tel:+381666433364">066 64 333 64</a></div></div>
+        </div>
+        <div class="sr flex items-center gap-4 p-5 rounded-2xl bg-frost border border-sky-100">
+          <div class="w-11 h-11 rounded-xl bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="text-[10.5px] font-bold text-mute uppercase tracking-wide mb-0.5">Email</div><div class="text-[13px] font-bold text-ink break-all"><a href="mailto:gvojicaleksandar@gmail.com">gvojicaleksandar@gmail.com</a></div></div>
+        </div>
+        <div class="sr flex items-center gap-4 p-5 rounded-2xl bg-frost border border-sky-100">
+          <div class="w-11 h-11 rounded-xl bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="text-[10.5px] font-bold text-mute uppercase tracking-wide mb-0.5">Adresa</div><div class="text-[13.5px] font-bold text-ink">Trg kralja Petra I 4, Sremska Kamenica</div></div>
+        </div>
+        <div class="sr flex items-center gap-4 p-5 rounded-2xl bg-frost border border-sky-100">
+          <div class="w-11 h-11 rounded-xl bg-icesky/10 flex items-center justify-center flex-shrink-0"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="text-[10.5px] font-bold text-mute uppercase tracking-wide mb-0.5">Radno vreme</div><div class="text-[13.5px] font-bold text-ink">Pon–Pet 08–18 · Sub 09–14</div></div>
+        </div>
+      </div>
+      <div class="sr rounded-3xl overflow-hidden border border-sky-100 shadow-sky-sm h-72 lg:h-full min-h-[280px]">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.4876756397267!2d19.88196!3d45.23405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b10b2e2f5e3fd%3A0x2b0a93c5e3f1f0e5!2sTrg%20kralja%20Petra%20I%204%2C%20Sremska%20Kamenica!5e0!3m2!1ssr!2srs!4v1700000000000!5m2!1ssr!2srs" title="Termogal Tech lokacija" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen class="w-full h-full"></iframe>
+      </div>
+    </div>
+    <div class="sr flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-icesky to-icesky2 text-white shadow-sky-xl">
+      <div>
+        <h3 class="font-display text-[20px] sm:text-[24px] font-800 mb-1">Ugradnja i servis klima uređaja Novi Sad — pozovite odmah</h3>
+        <p class="text-[14px] text-sky-100">Aleksandar odgovara lično. Bez sekretarica i čekanja na redu.</p>
+      </div>
+      <a href="tel:+381666433364" class="flex-shrink-0 inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-orange text-white font-bold text-[15px] shadow-orange-glow animate-pulse-cta hover:bg-orange2 transition-all">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.88a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        066 64 333 64
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-slate-300 pt-16 pb-28 lg:pb-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid md:grid-cols-3 gap-10 pb-10 border-b border-slate-700 mb-8">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-icesky to-icesky2 flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <div><div class="font-display font-800 text-[14px] text-white tracking-tight">TERMOGAL TECH</div><div class="text-[10px] font-semibold tracking-widest text-slate-400 uppercase">Aleksandar Gvojić</div></div>
+        </div>
+        <p class="text-[13.5px] text-slate-400 leading-relaxed">Profesionalna ugradnja i servis klima uređaja na teritoriji Novog Sada i Sremske Kamenice. Montaža sa garancijom, grejni sistemi i hitne vodoinstalaterske intervencije.</p>
+      </div>
+      <div>
+        <h5 class="text-[11px] font-bold tracking-widest uppercase text-slate-500 mb-4">Usluge</h5>
+        <ul class="space-y-2.5 text-[13.5px]">
+          <li><a href="#klima" class="hover:text-icesky2 transition">Klima &amp; Servis</a></li>
+          <li><a href="#grejanje" class="hover:text-icesky2 transition">Grejni sistemi</a></li>
+          <li><a href="#vodovod" class="hover:text-icesky2 transition">Vodovodne instalacije</a></li>
+          <li><a href="#kalkulator" class="hover:text-icesky2 transition">BTU Kalkulator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-[11px] font-bold tracking-widest uppercase text-slate-500 mb-4">Brzi linkovi</h5>
+        <ul class="space-y-2.5 text-[13.5px]">
+          <li><a href="#faq" class="hover:text-icesky2 transition">Česta pitanja</a></li>
+          <li><a href="#kontakt" class="hover:text-icesky2 transition">Kontakt i lokacija</a></li>
+          <li><a href="tel:+381666433364" class="hover:text-icesky2 transition">066 64 333 64</a></li>
+          <li><a href="mailto:gvojicaleksandar@gmail.com" class="hover:text-icesky2 transition">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-[11.5px] text-slate-500 leading-relaxed mb-6 max-w-2xl">Termogal Tech pruža usluge ugradnje i servisa klima uređaja u Novom Sadu i Sremskoj Kamenici — montaža klima sa garancijom, ovlašćeni servis i čišćenje klima, prodaja grejnih i vodovodnih sistema i hitne vodoinstalaterske intervencije.</p>
+    <div class="flex flex-col sm:flex-row justify-between gap-2 text-[12px] text-slate-500">
+      <p>© 2024 Termogal Tech · Trg kralja Petra I 4, Sremska Kamenica</p>
+      <p>Sva prava zadržana</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Header scroll */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('shadow-sky-sm', scrollY > 10);
+}, {passive:true});
+
+/* Mobile menu */
+const hmbg = document.getElementById('hmbg');
+const mobMenu = document.getElementById('mobMenu');
+hmbg.addEventListener('click', () => {
+  const open = mobMenu.classList.toggle('hidden') === false;
+  hmbg.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('.mml').forEach(a => a.addEventListener('click', () => mobMenu.classList.add('hidden')));
+
+/* Scroll reveal (cinematic wow effect) */
+const srEls = document.querySelectorAll('.sr');
+const srObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); srObs.unobserve(e.target); } });
+}, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+srEls.forEach(el => srObs.observe(el));
+
+/* Brojači statistike */
+const counters = document.querySelectorAll('.stat-num');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = +el.getAttribute('data-target');
+      let count = 0;
+      const step = Math.max(target / 40, 1);
+      const int = setInterval(() => {
+        count += step;
+        if (count >= target) { el.innerText = target; clearInterval(int); } 
+        else { el.innerText = Math.floor(count); }
+      }, 40);
+      counterObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObs.observe(c));
+
+/* FAQ accordion */
+function fqToggle(btn){
+  const item = btn.closest('.fq');
+  const a = item.querySelector('.fqa');
+  const icon = item.querySelector('.fqi');
+  const isOpen = a.style.maxHeight && a.style.maxHeight !== '0px';
+  document.querySelectorAll('.fq').forEach(f => {
+    f.querySelector('.fqa').style.maxHeight = '0px';
+    f.querySelector('.fqi').style.transform = '';
+    f.querySelector('.fqq').setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){
+    a.style.maxHeight = a.scrollHeight + 'px';
+    icon.style.transform = 'rotate(180deg)';
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
+/* 3D tilt on cards */
+document.querySelectorAll('.tilt').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const cx = r.left + r.width/2, cy = r.top + r.height/2;
+    const rx = (e.clientY - cy) / r.height * 6;
+    const ry = -(e.clientX - cx) / r.width * 6;
+    card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+/* ============ BTU CALCULATOR ============ */
+const kalk = { m2:null, m2Label:'', izoF:null, izoLabel:'', namF:null, namLabel:'' };
+
+function pickM2(el, m2){
+  el.closest('.grid').querySelectorAll('.kalk-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  kalk.m2 = m2;
+  kalk.m2Label = el.querySelector('.font-display').textContent + ' m²';
+  document.getElementById('next1').disabled = false;
+  document.getElementById('next1').classList.remove('bg-sky-200','cursor-not-allowed');
+  document.getElementById('next1').classList.add('bg-icesky','hover:bg-icesky2');
+}
+function pickIzo(el, f){
+  el.closest('.grid').querySelectorAll('.kalk-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  kalk.izoF = f;
+  kalk.izoLabel = el.querySelector('.font-display').textContent;
+  document.getElementById('next2').disabled = false;
+  document.getElementById('next2').classList.remove('bg-sky-200','cursor-not-allowed');
+  document.getElementById('next2').classList.add('bg-icesky','hover:bg-icesky2');
+}
+function pickNam(el, f, label){
+  el.closest('.grid').querySelectorAll('.kalk-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  kalk.namF = f;
+  kalk.namLabel = label;
+  document.getElementById('next3').disabled = false;
+  document.getElementById('next3').classList.remove('bg-sky-200','cursor-not-allowed');
+  document.getElementById('next3').classList.add('bg-icesky','hover:bg-icesky2');
+}
+
+function goStep(n){
+  document.querySelectorAll('.kstep').forEach(s=>s.classList.add('hidden'));
+  document.getElementById('kstep'+n).classList.remove('hidden');
+  [1,2,3].forEach(i=>{
+    const dot = document.getElementById('dot'+i);
+    dot.classList.remove('active','done');
+    if(i < n) dot.classList.add('done');
+    if(i === n) dot.classList.add('active');
+  });
+}
+
+const MODELI = {
+  9000:  { naziv: 'Inverter 9.000 BTU — Mali prostor',        opis: 'Za manje sobe do 25m², osnovna A++ klasa, 3 god. garancije.', img: 'model1.png' },
+  12000: { naziv: 'Inverter 12.000 BTU — Best Buy',           opis: 'Najprodavaniji model, Wi-Fi, greje do -15°C, 5 god. garancije.', img: 'model2.png' },
+  18000: { naziv: 'Inverter 18.000 BTU — Premium Nordic',     opis: 'Za velike prostore, grejanje do -25°C bez gubitka snage.', img: 'model3.png' }
+};
+
+function showKalkResult(){
+  document.querySelectorAll('.kstep').forEach(s=>s.classList.add('hidden'));
+  
+  // Realna inženjerska formula: 100W po kvadratu * gubici izolacije * namena
+  const wNeeded = kalk.m2 * 100 * kalk.izoF * kalk.namF;
+  
+  let chosen;
+  if (wNeeded <= 3200) chosen = 9000;      // do 3.2 kW
+  else if (wNeeded <= 4600) chosen = 12000; // do 4.6 kW
+  else chosen = 18000;                     // preko 4.6 kW
+
+  const kw = (chosen / 3412).toFixed(1);
+  const model = MODELI[chosen];
+
+  document.getElementById('kBTU').textContent = chosen.toLocaleString('sr-RS') + ' BTU / ' + kw + ' kW';
+  document.getElementById('kDetail').textContent = 'Inverter klima — preporučeno za ' + kalk.m2Label + ' sa "' + kalk.izoLabel + '" izolacijom';
+  document.getElementById('rM2').textContent = kalk.m2Label;
+  document.getElementById('rIzo').textContent = kalk.izoLabel;
+  document.getElementById('rNam').textContent = kalk.namLabel;
+
+  document.getElementById('kModelName').textContent = model.naziv;
+  document.getElementById('kModelDesc').textContent = model.opis;
+  document.getElementById('kModelImg').innerHTML = '<img src="' + model.img + '" alt="' + model.naziv + '" class="max-w-full max-h-full object-contain mix-blend-multiply p-2">';
+
+  const msg = `Pozdrav, uradio sam kalkulaciju za stan od ${kalk.m2Label} (${(chosen/1000).toFixed(0)}k BTU), izolacija: ${kalk.izoLabel}, namena: ${kalk.namLabel}. Zanima me cena sa ugradnjom.`;
+  document.getElementById('kWaBtn').href = 'https://wa.me/381666433364?text=' + encodeURIComponent(msg);
+  
+  const res = document.getElementById('kresult');
+  res.classList.remove('hidden');
+  // Trigger animation manually for the result
+  setTimeout(() => res.classList.add('on'), 50);
+}
+
+function resetKalk(){
+  kalk.m2=null; kalk.izoF=null; kalk.namF=null;
+  document.querySelectorAll('.kalk-btn').forEach(b=>b.classList.remove('active'));
+  ['next1','next2','next3'].forEach(id=>{
+    const b = document.getElementById(id);
+    b.disabled = true;
+    b.classList.add('bg-sky-200','cursor-not-allowed');
+    b.classList.remove('bg-icesky','hover:bg-icesky2');
+  });
+  const res = document.getElementById('kresult');
+  res.classList.add('hidden');
+  res.classList.remove('on');
+  goStep(1);
+}
+</script>
+</body>
+</html>
